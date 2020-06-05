@@ -31,13 +31,13 @@
 				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
-						<muleVersion>4.3.0</muleVersion>
-						<username>vishnuapi</username>
-            			<password>Vishnu13$#</password>
-            			<applicationName>jenkins-vv-hello-world</applicationName>
-            			<environment>Sandbox</environment>
+						<muleVersion>${mule.version}</muleVersion>
+						<username>${anypoint.username}</username>
+            			<password>${anypoint.password}</password>
+            			<applicationName>${cloudhub.app}</applicationName>
+            			<environment>${cloudhub.environment}</environment>
             			<region>eu-west-2</region>
-            			<workerType>Micro</workerType>
+            			<workerType>${cloudhub.worker}</workerType>
             			<workers>1</workers>
             			<objectStoreV2>true</objectStoreV2>
 					</cloudHubDeployment>
