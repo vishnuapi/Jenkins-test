@@ -30,5 +30,24 @@ pipeline {
             bat 'mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version="%MULE_VERSION%" -Danypoint.username="%DEPLOY_CREDS_USR%" -Danypoint.password="%DEPLOY_CREDS_PSW%" -Dcloudhub.app="%APP_NAME%" -Dcloudhub.environment="%ENVIRONMENT%" -Dcloudhub.bg="%BG%" -Dcloudhub.worker="%WORKER%"'
       }
     }
+    
+    stage('NexusArtifactUploaderJob'){
+    	steps{
+    		nexusArtifactUploader {
+        nexusVersion('nexus3')
+        protocol('http')
+        nexusUrl('localhost:8081')
+        groupId('com.mycompany')
+        version('1.2.0')
+        repository('NexusArtifactUploader')
+        credentialsId('Nexus')
+        artifact {
+            artifactId('jenkins-vv-hello-world')
+            type('jar')
+            file('target\jenkins-vv-hello-world-1.0.0-SNAPSHOT-mule-application.jar')
+        }
+    	}
+    }
+    
 }
 }
