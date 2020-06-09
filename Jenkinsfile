@@ -33,7 +33,6 @@ pipeline {
     
     stage('NexusArtifactUploaderJob'){
     	steps{
-    		nexusArtifactUploader {
 				nexusVersion('nexus3')
 				protocol('http')
 				nexusUrl('localhost:8081')
@@ -46,7 +45,6 @@ pipeline {
 					type('jar')
 					file('target/jenkins-vv-hello-world-1.0.0-SNAPSHOT-mule-application.jar')
 				}
-			}
 		}
 	}
     
