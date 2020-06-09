@@ -31,13 +31,13 @@
 				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
-						<muleVersion>${mule.version}</muleVersion>
-						<username>${anypoint.username}</username>
-            			<password>${anypoint.password}</password>
-            			<applicationName>${cloudhub.app}</applicationName>
-            			<environment>${cloudhub.environment}</environment>
+						<muleVersion>4.3.0</muleVersion>
+						<username>vishnuapi</username>
+            			<password>Vishnu13$#</password>
+            			<applicationName>jenkins-vv-hello-world-DEV</applicationName>
+            			<environment>Sandbox</environment>
             			<region>eu-west-2</region>
-            			<workerType>${cloudhub.worker}</workerType>
+            			<workerType>Micro</workerType>
             			<workers>1</workers>
             			<objectStoreV2>true</objectStoreV2>
 					</cloudHubDeployment>
@@ -52,13 +52,13 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
+			<!--  <plugin>
     			<groupId>org.apache.maven.plugins</groupId>
     			<artifactId>maven-deploy-plugin</artifactId>
     			<configuration>
         			<skip>true</skip>
     			</configuration>
-			</plugin>
+			</plugin> -->
 		</plugins>
 	</build>
 
@@ -115,12 +115,15 @@
 	
 	
     
-   <!--  <distributionManagement>
-       <repository>
-         <id>internal.repo</id>
-         <name>Internal repo</name>
-         <url>file:///C:/Users/DELL/.m2/app-repo</url>
-       </repository>
-   </distributionManagement> -->
+   <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
