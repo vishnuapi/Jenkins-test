@@ -44,7 +44,7 @@ pipeline {
         artifact {
             artifactId('jenkins-vv-hello-world')
             type('jar')
-            file('target\jenkins-vv-hello-world-1.0.0-SNAPSHOT-mule-application.jar')
+            file('target/jenkins-vv-hello-world-1.0.0-SNAPSHOT-mule-application.jar')
         }
     	}
     }
