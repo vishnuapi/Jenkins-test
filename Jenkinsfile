@@ -38,7 +38,7 @@ pipeline {
         APP_NAME = 'jenkins-vv-hello-world-DEV'
       }
       steps {
-            bat 'mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Dmule.version="%MULE_VERSION%" -Danypoint.username="%DEPLOY_CREDS_USR%" -Danypoint.password="%DEPLOY_CREDS_PSW%" -Dcloudhub.app="%APP_NAME%" -Dcloudhub.environment="%ENVIRONMENT%" -Dcloudhub.bg="%BG%" -Dcloudhub.worker="%WORKER%"'
+            bat 'mvn package -DskipTests=true'
       }
     }
     
@@ -48,8 +48,8 @@ pipeline {
 				nexusVersion: NEXUS_VERSION,
                 protocol: NEXUS_PROTOCOL,
                 nexusUrl: NEXUS_URL,
-                groupId: pom.groupId,
-                version: pom.version,
+                groupId: "com.mycompany",
+                version: "1.2.0",
                 repository: NEXUS_REPOSITORY,
                 credentialsId: NEXUS_CREDENTIAL_ID,
 				artifacts: [
