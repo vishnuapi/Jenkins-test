@@ -7,6 +7,17 @@ pipeline {
     MULE_VERSION = '4.3.0'
     BG = "HOme"
     WORKER = "Micro"
+    
+    // This can be nexus3 or nexus2
+        NEXUS_VERSION = "nexus3"
+        // This can be http or https
+        NEXUS_PROTOCOL = "http"
+        // Where your Nexus is running
+        NEXUS_URL = "localhost:8081"
+        // Repository where we will upload the artifact
+        NEXUS_REPOSITORY = "maven-releases"
+        // Jenkins credential id to authenticate to Nexus OSS
+        NEXUS_CREDENTIAL_ID = "Nexus"
   }
   stages {
     stage('Build') {
@@ -34,13 +45,13 @@ pipeline {
     stage('NexusArtifactUploaderJob'){
     	steps{
     		nexusArtifactUploader (
-				nexusVersion('nexus3')
-				protocol('http')
-				nexusUrl('localhost:8081')
-				groupId('com.mycompany')
-				version('1.2.0')
-				repository('maven-releases')
-				credentialsId('Nexus')
+				nexusVersion: NEXUS_VERSION,
+                protocol: NEXUS_PROTOCOL,
+                nexusUrl: NEXUS_URL,
+                groupId: pom.groupId,
+                version: pom.version,
+                repository: NEXUS_REPOSITORY,
+                credentialsId: NEXUS_CREDENTIAL_ID,
 				artifacts: [
 					[artifactId :"jenkins-vv-hello-world",
 					type:"jar",
