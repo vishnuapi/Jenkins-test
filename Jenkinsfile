@@ -38,7 +38,7 @@ pipeline {
         APP_NAME = 'jenkins-vv-hello-world-DEV'
       }
       steps {
-            bat 'mvn package -DskipTests=true'
+            bat 'mvn clean package -DskipTests=true'
       }
     }
     
